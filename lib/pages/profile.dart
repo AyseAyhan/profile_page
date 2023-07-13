@@ -29,7 +29,7 @@ class _ProfilePageState extends State<ProfilePage> {
         padding: const EdgeInsets.symmetric(horizontal: 15),
         physics: const BouncingScrollPhysics(),
         children: [
-          const SizedBox(height: 80),
+          const SizedBox(height: 50),
           const Text(
             'Edit Your ACHIEVO Profile',
             textAlign: TextAlign.left,

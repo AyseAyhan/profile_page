@@ -18,6 +18,8 @@ dependencies:
   flutter:
     sdk: flutter
   provider: ^6.0.1
+  http: ^0.13.3
+  lottie: ^1.4.2
 
   #persist local data
   shared_preferences: ^2.0.5
@@ -51,3 +53,4 @@ flutter:
 
 
   uses-material-design: true
+

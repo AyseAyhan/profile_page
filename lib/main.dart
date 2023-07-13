@@ -12,7 +12,7 @@ void main() async {
 class MyApp extends StatefulWidget {
   const MyApp({Key? key});
 
-  static const String title = 'User Profile';
+  static const String title = 'Profile';
 
   @override
   MyAppState createState() => MyAppState();
@@ -27,9 +27,15 @@ class MyAppState extends State<MyApp> {
     });
   }
 
+  void goToProfilePage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ProfilePage()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-
     final brightness = isDarkModeEnabled ? Brightness.dark : Brightness.light;
 
     return MaterialApp(
@@ -50,21 +56,33 @@ class MyAppState extends State<MyApp> {
         ),
       ),
       title: MyApp.title,
-      home: ProfilePage(),
-      builder: (context, child) {
-        return Scaffold(
-          appBar: AppBar(
-            actions: [
-              IconButton(
-                icon: Icon(isDarkModeEnabled ? Icons.light_mode : Icons.dark_mode),
-                onPressed: () => toggleDarkMode(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text(MyApp.title),
+          actions: [
+            IconButton(
+              icon: Icon(isDarkModeEnabled ? Icons.light_mode : Icons.dark_mode),
+              onPressed: () => toggleDarkMode(),
+            ),
+          ],
+        ),
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              ListTile(
+                title: const Text('Profile'),
+                onTap: () {
+                  goToProfilePage();
+                  Navigator.pop(context);
+                },
               ),
             ],
           ),
-          body: child,
-        );
-      },
+        ),
+        body: const ProfilePage(),
+      ),
     );
   }
 }
+
 
